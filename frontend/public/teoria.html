@@ -5,566 +5,161 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Parte teórica · Préstamos Makers</title>
   <style>
-    :root {
-      --blue: #2563eb;
-      --blue-dark: #1e40af;
-      --blue-soft: #eff6ff;
-      --border: #dbeafe;
-      --ink: #0f172a;
-      --muted: #475569;
-      --muted-2: #64748b;
-      --card: #ffffff;
-    }
-
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      background: var(--blue-soft);
-      color: var(--ink);
-      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-      font-size: 16px;
-      line-height: 1.7;
-    }
-
-    .wrap {
-      width: min(960px, calc(100% - 40px));
-      margin: 0 auto;
-    }
-
-    header.hero {
-      padding: 56px 0 24px;
-    }
-
-    .eyebrow {
-      margin: 0 0 8px;
-      color: var(--blue);
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: clamp(32px, 5vw, 44px);
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-    }
-
-    .lead {
-      max-width: 680px;
-      margin: 12px 0 0;
-      color: var(--muted);
-      font-size: 17px;
-    }
-
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin: 24px 0 28px;
-    }
-
-    nav a {
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      background: #fff;
-      color: var(--blue-dark);
-      padding: 6px 12px;
-      font-size: 13px;
-      font-weight: 600;
-      text-decoration: none;
-    }
-
-    nav a:hover {
-      border-color: #93c5fd;
-      background: #f8fbff;
-    }
-
-    main {
-      padding-bottom: 48px;
-    }
-
-    section {
-      margin-bottom: 20px;
-      padding: 30px;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      background: var(--card);
-      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
-    }
-
-    h2 {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin: 0 0 10px;
-      font-size: 24px;
-      line-height: 1.25;
-      letter-spacing: -0.01em;
-    }
-
-    h2 .num {
-      display: inline-grid;
-      place-items: center;
-      flex: 0 0 auto;
-      width: 34px;
-      height: 34px;
-      border-radius: 10px;
-      background: var(--blue);
-      color: #fff;
-      font-size: 15px;
-      font-weight: 700;
-    }
-
-    .question {
-      margin: 0 0 22px;
-      padding-left: 14px;
-      border-left: 3px solid #bfdbfe;
-      color: var(--muted);
-      font-size: 15px;
-    }
-
-    h3 {
-      margin: 26px 0 10px;
-      color: var(--blue-dark);
-      font-size: 18px;
-    }
-
-    p {
-      margin: 0 0 14px;
-    }
-
-    ul {
-      margin: 0 0 16px;
-      padding-left: 22px;
-    }
-
-    li {
-      margin-bottom: 8px;
-    }
-
-    li::marker {
-      color: var(--blue);
-    }
-
-    code {
-      padding: 2px 5px;
-      border-radius: 5px;
-      background: #f1f5f9;
-      color: #0f172a;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-      font-size: 0.9em;
-    }
-
-    .closing {
-      margin-top: 4px;
-      color: var(--muted-2);
-      font-size: 14px;
-    }
-
-    footer {
-      padding: 0 0 56px;
-      color: var(--muted-2);
-      font-size: 13px;
-      text-align: center;
-    }
-
-    @media (max-width: 640px) {
-      header.hero { padding-top: 36px; }
-      section { padding: 22px; }
-      h2 { font-size: 21px; }
-    }
-
-    @media print {
-      body { background: #fff; }
-      nav, footer { display: none; }
-      section {
-        break-inside: avoid;
-        box-shadow: none;
-        border-color: #cbd5e1;
-      }
-    }
+    body { margin: 0; background: #eff6ff; color: #0f172a; font: 16px/1.7 system-ui, sans-serif; }
+    header, main { width: min(900px, calc(100% - 40px)); margin: 0 auto; }
+    header { padding: 56px 0 24px; }
+    .eyebrow { margin: 0 0 8px; color: #2563eb; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    h1 { margin: 0; font-size: clamp(32px, 5vw, 44px); line-height: 1.1; }
+    nav { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+    nav a { border: 1px solid #dbeafe; border-radius: 999px; background: #fff; color: #1e40af; padding: 6px 12px; font-size: 13px; font-weight: 600; text-decoration: none; }
+    section { margin-bottom: 18px; padding: 28px; border: 1px solid #dbeafe; border-radius: 16px; background: #fff; }
+    h2 { margin: 0 0 8px; font-size: 23px; line-height: 1.25; }
+    .question { margin: 0 0 14px; padding-left: 14px; border-left: 3px solid #bfdbfe; color: #475569; font-size: 15px; }
+    p { margin: 0; }
+    code { padding: 2px 5px; border-radius: 4px; background: #f1f5f9; font-size: 0.9em; }
+    footer { padding: 0 0 56px; color: #64748b; font-size: 13px; text-align: center; }
+    @media (max-width: 640px) { header { padding-top: 36px; } section { padding: 22px; } h2 { font-size: 20px; } }
+    @media print { body { background: #fff; } nav, footer { display: none; } section { break-inside: avoid; } }
   </style>
 </head>
 <body>
-  <header class="hero wrap">
+  <header>
     <p class="eyebrow">Prueba técnica · Spring Boot + Angular</p>
     <h1>Parte teórica</h1>
-    <p class="lead">
-      Sistema de gestión de préstamos. Respuestas y decisiones técnicas, con ejemplos de lo que
-      aplicaría en una API bancaria real y de lo que ya está montado en este repositorio.
-    </p>
   </header>
 
-  <nav class="wrap" aria-label="Preguntas">
+  <nav aria-label="Preguntas">
     <a href="#q1">1. Optimización</a>
     <a href="#q2">2. Seguridad</a>
     <a href="#q3">3. Distribuidas</a>
     <a href="#q4">4. Pruebas</a>
     <a href="#q5">5. Front-end</a>
-    <a href="#q6">6. Spring Boot</a>
   </nav>
 
-  <main class="wrap">
+  <main>
     <section id="q1">
-      <h2><span class="num">1</span> Optimización en sistemas financieros</h2>
+      <h2>1. Optimización en sistemas financieros</h2>
       <p class="question">
-        En una aplicación bancaria que procesa transacciones en tiempo real, ¿qué estrategias
-        aplicarías para mejorar rendimiento y escalabilidad? Concurrencia, caché y patrones.
-      </p>
-
-      <p>
-        Lo primero que haría es medir. En una API de transacciones el cuello de botella casi nunca
-        está en el código Java; suele estar en la base de datos, en transacciones demasiado largas o
-        en llamadas externas metidas dentro de la transacción. Sin métricas de latencia (p95 y p99),
-        throughput y errores, cualquier optimización es una apuesta.
-      </p>
-
-      <h3>Concurrencia</h3>
-      <p>
-        La fuente de la verdad es la base de datos. No llevaría saldos en memoria ni en un mapa
-        compartido entre instancias. Para las operaciones que tocan un saldo usaría transacciones
-        cortas y un mecanismo de bloqueo explícito: optimista con <code>@Version</code> cuando los
-        conflictos son raros, y pesimista con <code>SELECT ... FOR UPDATE</code> cuando la operación
-        es crítica y los conflictos son frecuentes. En PostgreSQL, <code>READ COMMITTED</code> suele
-        ser suficiente; subir a <code>SERIALIZABLE</code> solo si hay una invariante que lo exija, y
-        asumiendo que habrá que reintentar.
-      </p>
-      <ul>
-        <li>Transacciones cortas y sin HTTP a servicios externos dentro de ellas.</li>
-        <li>Clave de idempotencia en la operación para que un reintento del cliente no duplique el movimiento.</li>
-        <li>Colas (Kafka, RabbitMQ o SQS) para los picos y consumidores con concurrencia limitada, aplicando backpressure.</li>
-        <li>Virtual threads de Java 25 para el trabajo de I/O, pero con pools y timeouts; no lanzar hilos sin control.</li>
-        <li>API sin estado para escalar horizontalmente, y pool de conexiones dimensionado al tamaño real de la base de datos.</li>
-      </ul>
-      <p>
-        Si la base de datos es el límite, separaría el modelo de lectura del de escritura, añadiría
-        réplicas para consultas y particionaría por cliente o por fecha. No metería microservicios
-        antes de tener el problema: cambiar complejidad de código por complejidad operativa no suele
-        salir bien.
-      </p>
-
-      <h3>Caché</h3>
-      <p>
-        Cachearía lo que se puede quedar viejo unos segundos: tipos de cambio, catálogos, resúmenes
-        o el estado de una solicitud. El saldo disponible no lo trataría como un dato cacheado de
-        verdad; como mucho, una vista de lectura con TTL corto e invalidación explícita al escribir.
-        Caffeine va bien para caché local; Redis si hay varias instancias y necesito compartirla.
-        Patrón cache-aside, TTL corto y cuidado con el stampede cuando expira una entrada muy
-        consultada.
+        En una aplicación bancaria que procesa transacciones en tiempo real, ¿qué estrategia
+        aplicarías para mejorar rendimiento y escalabilidad?
       </p>
       <p>
-        En este proyecto usé Caffeine para los listados de préstamos, con TTL de 30 segundos y
-        evicción al crear o decidir. Para saldos no lo haría: un saldo cacheado que no se invalida a
-        tiempo es un problema de negocio, no de rendimiento.
-      </p>
-
-      <h3>Patrones</h3>
-      <p>
-        CQRS y outbox cuando el volumen los justifica; saga para flujos entre servicios; circuit
-        breaker y timeouts para dependencias externas. Empezaría con un monolito modular bien
-        separado por dominio. Los patrones se añaden cuando resuelven un problema medido, no antes.
-        Para notificaciones en tiempo real usaría SSE o WebSocket, pero como canal de aviso, no como
-        fuente de verdad del saldo.
+        Rendimiento: Primero mediría dónde está el cuello de botella. Puede ser a nivel de frontend
+        por malas prácticas o mala optimización, como un bucle, o a nivel de transacciones. Si hay
+        demasiadas transacciones y el servidor ya no da para más, se necesitaría generar múltiples
+        hilos para procesar todas las transacciones, aunque eso solo ayuda cuando el límite está en la
+        espera de I/O y no en la CPU. Dependiendo de la estructura del proyecto, si es un Spring Boot
+        con Java, se puede utilizar virtual threads para no mover todo el framework a Spring
+        Reactive. Escalabilidad: Evaluaría mi base de usuarios actual y cuántas personas consumen mi
+        aplicación. En base a eso decidiría la escala. Normal sería arrancar con un monolito, que sea
+        un proceso, un servicio. A medida que se requieran más, ese monolito puede ser un monolito
+        multipaquete, que dentro del monolito hayan otros servicios pero todavía están dentro del
+        mismo monolito. Y ya si es demasiado grande se podría hacer una escala a microservicios. Igual
+        depende de la funcionalidad de la aplicación. Concurrencia: Es más un tema de sincronización.
+        Lo que se haría sería separar todas las acciones que se hagan a base de datos con transacciones
+        y se harían unas consultas. Por ejemplo, si hay dos transacciones al mismo tiempo para un
+        mismo campo, para que ese campo devuelva realmente el valor que se tenga y se resuelvan ambas
+        transferencias con valores correctos, se utilizaría por ejemplo un bloqueo pesimista, con
+        transacciones cortas y un orden de bloqueo consistente para no caer en deadlocks. Caché:
+        Dependiendo de la cantidad de consultas que se hagan a la base de datos, para reducir ese
+        volumen se optaría por ejemplo por Redis para mantener los datos en memoria RAM y hacer
+        consultas directamente a esto y no a la base de datos, siempre que sean datos que toleran estar
+        algo viejos; el saldo no se cachea. Patrones de diseño: Tendría que verse cómo se pretende
+        escalar la aplicación para aplicar X o Y patrón.
       </p>
     </section>
 
     <section id="q2">
-      <h2><span class="num">2</span> Seguridad en APIs financieras</h2>
+      <h2>2. Seguridad en APIs financieras</h2>
       <p class="question">
-        ¿Cómo protegerías una API con información sensible de cuentas contra inyección SQL, CSRF,
+        ¿Cómo protegerías una app con información sensible de cuentas contra inyecciones SQL, CSRF,
         XSS y otros ataques comunes?
       </p>
-
       <p>
-        Defensa en profundidad. Ninguna capa sola alcanza, y la seguridad real está en el backend;
-        lo que haga el frontend es experiencia de usuario, no control de acceso.
-      </p>
-
-      <h3>Inyección SQL</h3>
-      <p>
-        Con JPA o consultas parametrizadas el problema casi desaparece. La regla es no concatenar
-        nunca entrada del usuario en SQL, ni siquiera para un <code>ORDER BY</code>: si el
-        ordenamiento es dinámico, se valida contra una lista blanca. El usuario de base de datos de
-        la aplicación no debe ser superusuario, solo tener permisos sobre su esquema. Las
-        migraciones las maneja Flyway y las consultas nativas usan parámetros con nombre, no
-        <code>${...}</code>.
-      </p>
-
-      <h3>CSRF</h3>
-      <p>
-        Con un access token en la cabecera <code>Authorization</code> el navegador no lo envía solo,
-        así que el CSRF clásico baja bastante. El riesgo aparece con la cookie de refresh: esos
-        endpoints sí necesitan token CSRF, con <code>CookieCsrfTokenRepository</code> y la cabecera
-        <code>X-XSRF-TOKEN</code>. La cookie va <code>HttpOnly</code>, <code>Secure</code>,
-        <code>SameSite=Lax</code> y con un <code>Path</code> acotado. En Angular se configura con
-        <code>withXsrfConfiguration</code>.
-      </p>
-
-      <h3>XSS</h3>
-      <p>
-        Angular escapa las interpolaciones por defecto. El problema llega cuando se usa
-        <code>innerHTML</code>, <code>bypassSecurityTrustHtml</code> o se pinta contenido de
-        terceros. Ahí hay que sanitizar en el servidor y evitar confiar en el cliente. Una CSP
-        restrictiva (<code>script-src 'self'</code>), <code>X-Content-Type-Options: nosniff</code> y
-        una <code>Referrer-Policy</code> ayudan. Y algo que mucha gente pasa por alto: el access
-        token no va en <code>localStorage</code>; si hay XSS, se lo llevan. En memoria y el refresh
-        en cookie <code>HttpOnly</code>.
-      </p>
-
-      <h3>El resto</h3>
-      <ul>
-        <li>Autorización en el backend con <code>@PreAuthorize</code> y comprobación de propiedad del recurso, no solo del rol. Un usuario no debe poder leer la cuenta de otro cambiando un id.</li>
-        <li>JWT de vida corta, refresh rotatorio, hash del refresh en base de datos y revocación si se detecta reutilización.</li>
-        <li>Rate limit y bloqueo progresivo en login, sin revelar si el correo existe.</li>
-        <li>TLS y HSTS; CORS con orígenes exactos, nunca <code>*</code> con credenciales.</li>
-        <li>Secretos en variables de entorno o en el gestor del proveedor, nunca en el repositorio.</li>
-        <li>Validación con Bean Validation y DTOs de entrada para evitar mass assignment; errores sin stacktrace ni detalles internos.</li>
-        <li>Auditoría de accesos y operaciones, sin loguear datos sensibles, y escaneo de dependencias en CI.</li>
-        <li>Idempotencia y límites de tamaño en operaciones de dinero.</li>
-      </ul>
-      <p>
-        Al final, lo que busco es que el fallo de una capa no se convierta en el fallo de todo:
-        validar en el borde, autorizar en cada recurso, no confiar en el cliente y reducir el
-        impacto cuando algo se rompe. La seguridad no es una anotación suelta.
+        Inyecciones SQL y XSS: Yo creo que es más un tema de buenas prácticas que de ataques que haya
+        que tratar uno por uno. Es importante tenerlo presente, porque se resuelve casi solo
+        utilizándolas. Para inyecciones SQL, si se utiliza JPA, o sea si se utilizan los repositorios
+        que ofrece Spring Boot para hacer todas las transacciones con base de datos, que no se
+        concatenen valores en la consulta, que esos valores se pasen siempre como parámetros y que no
+        se armen consultas con lo que llega de la API. Si se evitan esas malas prácticas que ya son
+        conocidas se evita muy fácilmente la inyección SQL. Para ataques XSS es igual, es más que todo
+        a nivel de malas prácticas. En el caso de Angular, Angular es muy fuerte por defecto. Para
+        permitir que te hagan un ataque XSS es porque estás haciendo algo o estás moviendo algo a
+        propósito que evade ya los guardarraíles que ofrece Angular por defecto, como
+        <code>innerHTML</code> o <code>bypassSecurityTrustHtml</code>. Entonces es como evitar
+        hacerlo. CSRF Token: Esto es más que todo cuando hay manejo de sesiones en la aplicación,
+        entonces se necesita el token CSRF para que otro sitio no pueda usar tu sesión sin que te des
+        cuenta, junto con <code>SameSite</code> y <code>Secure</code> en las cookies. Lo que el token
+        no hace es proteger una cookie ya robada: contra eso está <code>HttpOnly</code>, que impide
+        leerla desde JavaScript, y una CSP que corte el XSS. Entonces se necesitaría ya ahí el tema de
+        CSRF. No es que sea un obligatorio tampoco, depende también de la aplicación.
       </p>
     </section>
 
     <section id="q3">
-      <h2><span class="num">3</span> Transacciones en sistemas distribuidos</h2>
+      <h2>3. Transacciones en sistemas distribuidos</h2>
       <p class="question">
-        En un sistema bancario distribuido, ¿cómo implementarías consistencia y manejo de errores en
-        una API que procesa transferencias entre cuentas de diferentes servicios?
+        En un sistema bancario distribuido, ¿Cómo implementarías consistencia y manejo de errores en
+        una API que precise transferencia entre cuentas de diferentes servicios?
       </p>
-
       <p>
-        Lo primero es intentar que la transferencia no sea distribuida. Si las dos cuentas viven en
-        la misma base de datos o en el mismo servicio, una transacción local con bloqueo de filas
-        resuelve el problema sin añadir complejidad. Si de verdad son servicios distintos, no usaría
-        una transacción 2PC: acopla la disponibilidad de todos y en la práctica es difícil de
-        operar.
-      </p>
-
-      <p>
-        Usaría una saga con un orquestador y una máquina de estados. La transferencia se crea en
-        <code>PENDING</code> con una clave de idempotencia; se retiene el dinero en la cuenta de
-        origen; se acredita en la de destino; y solo entonces se confirma. Si un paso falla, se
-        compensa lo anterior: liberar la retención o revertir el crédito. Cada paso tiene que ser
-        idempotente, porque los reintentos van a ocurrir.
-      </p>
-
-      <ul>
-        <li>Tabla de estado de la transferencia y de sus pasos, con transiciones claras.</li>
-        <li>Outbox transaccional para publicar eventos después del commit; así no hay doble escritura entre la base y el broker.</li>
-        <li>Consumidores idempotentes, deduplicando por id de evento, y reintentos con backoff, timeout y cola de mensajes fallidos.</li>
-        <li>Reconciliación periódica contra el ledger. Al final, la verdad contable es el ledger de doble entrada, no el saldo que muestra una pantalla.</li>
-        <li>Observabilidad con trazas y un id de operación que aparezca en logs, respuesta y soporte.</li>
-      </ul>
-
-      <p>
-        La consistencia es fuerte dentro de cada servicio y eventual entre servicios. No se puede
-        prometer “exactamente una vez” de punta a punta; se trabaja con entrega al menos una vez y
-        consumidores idempotentes. Los errores se traducen a códigos claros: 409 si hay conflicto de
-        estado, 422 si incumple una regla de negocio, 503 si una dependencia no está disponible. Y
-        nada de devolver un 500 genérico que no le dice nada a quien opera el sistema.
-      </p>
-
-      <p>
-        En este proyecto la aprobación de un préstamo es una sola transacción con
-        <code>@Transactional</code> y una transición PENDING → APPROVED/REJECTED. Si mañana el
-        desembolso lo hiciera otro servicio, lo resolvería con outbox y saga, no con una llamada
-        HTTP dentro de la transacción.
+        Consistencia: Lo que yo me asumiría como consistencia sería que todas las transferencias, si
+        una transferencia falla, esa transacción se revierta y no deje ningún efecto. Eso funciona si
+        las cuentas comparten base; si están en servicios distintos, un rollback local no deshace lo
+        que el otro servicio ya confirmó, así que ahí necesitaría compensaciones, tipo saga, con pasos
+        idempotentes. También con un bloqueo optimista o pesimista, si no estoy mal, me encargaría de
+        seleccionar los datos reales de mi aplicación actual, entonces mantendría la consistencia de
+        los valores y no quedarían duplicados en retiros ni en aumentos en caso pues que es una
+        transferencia. Manejo de errores en una API: Es muy común que cuando se llaman otras APIs haya
+        falsos positivos, o sea la comunicación es exitosa, se hace toda la transacción y devuelven
+        doscientos, pero internamente en la información te dice que hay un error. Eso es porque se
+        valida únicamente todo el proceso lógico del servicio, todo el proceso a nivel de controlador,
+        y el servicio responde, pero realmente internamente no está dando una información acorde a ese
+        código de respuesta. Lo mejor es erradicar el error de raíz, siempre y cuando se tenga acceso,
+        porque hay veces se llaman a servicios de externos o de terceros que hacen estos mismos falsos
+        positivos y ya se infiere esa deuda técnica. Se implementa un sistema de respuesta basado en la
+        respuesta de negocio, o sea que lo que condicione el estado de esa API sea el resultado total
+        de esa API. Entonces si es una transferencia de dinero, se tiene que validar el valor o el
+        contenido de esa transferencia, validar si realmente contiene la información que debería
+        responder. De esa manera se valida que no hayan falsos positivos.
       </p>
     </section>
 
     <section id="q4">
-      <h2><span class="num">4</span> Pruebas unitarias y de integración</h2>
+      <h2>4. Pruebas unitarias y de integración</h2>
       <p class="question">
         ¿Cómo diseñarías una suite de pruebas para asegurar una API bancaria? ¿Qué herramientas
         usarías?
       </p>
-
       <p>
-        Depende de lo que duela, pero la base es la misma: muchas pruebas rápidas de reglas de
-        negocio y una capa más pequeña de pruebas de integración que arrastren infraestructura real.
-        En un banco no me interesa solo que el endpoint responda 200; me interesa que no se pueda
-        retirar más de lo que hay, que un usuario no vea la cuenta de otro y que una decisión no se
-        aplique dos veces. He visto suites con mucha cobertura y pocos casos de negocio; prefiero
-        menos tests, pero que duelan cuando algo se rompe.
-      </p>
-
-      <h3>Unitarias</h3>
-      <p>
-        JUnit 5 con Mockito y AssertJ para el dominio y los servicios, sin levantar Spring. Casos
-        felices, límites, estados inválidos, permisos, idempotencia y errores. Inyectaría un
-        <code>Clock</code> para no depender de la hora real y evitar pruebas que fallan en enero.
-      </p>
-
-      <h3>Integración</h3>
-      <p>
-        <code>@SpringBootTest</code> con MockMvc o TestRestTemplate, y Testcontainers con
-        PostgreSQL real. H2 es cómodo, pero esconde diferencias de SQL, constraints y bloqueos que
-        sí aparecen en producción. Así valido Flyway, el mapeo de JPA y las migraciones de verdad.
-        La matriz de seguridad es obligatoria: anónimo, usuario autenticado, admin y usuario dueño
-        frente a otro usuario. También los errores de validación y el formato de las respuestas.
-      </p>
-
-      <ul>
-        <li>Pruebas de concurrencia en las operaciones críticas: dos decisiones simultáneas sobre el mismo préstamo, dos transferencias que compiten por el mismo saldo.</li>
-        <li>Pruebas de contrato si hay varios consumidores: Pact o Spring Cloud Contract.</li>
-        <li>E2E con Playwright o Cypress para el recorrido crítico: login, solicitar, aprobar y ver el estado.</li>
-      </ul>
-
-      <h3>Frontend</h3>
-      <p>
-        Vitest con TestBed, <code>HttpTestingController</code> para servicios e interceptores, y
-        pruebas de guards y formularios reactivos. Para el flujo completo, Playwright. No probaría
-        cada detalle visual; sí las validaciones, los estados de error y que el rol admin no vea las
-        acciones de decisión si no le corresponden.
-      </p>
-
-      <p>
-        En CI correría todo en cada PR, con cobertura enfocada en el dominio (no perseguiría un 100%
-        global), análisis estático y escaneo de dependencias. Las pruebas tienen que ser
-        deterministas: nada de <code>sleep</code>, datos aislados y Awaitility para lo asíncrono.
-      </p>
-      <p>
-        En este repositorio tengo pruebas unitarias del servicio de préstamos y una prueba de API
-        con JWT firmado y Testcontainers. Para el frontend, build, lint y Vitest para la lógica que
-        lo merece.
+        No armaría algo muy complejo: empezaría por test unitarios de la lógica de negocio, que es lo
+        más importante. Después haría pruebas de integración, de por ejemplo que se pruebe el
+        controlador, la consulta y el resultado, que los tipos y el resultado sean consistentes.
+        Utilizaría por ejemplo Mockito. Y pues tendría que hacer las integraciones, por ejemplo con
+        test para hacer las consultas con PostgreSQL y ahí pasaría todas las validaciones. Y por
+        ejemplo para completar flujos del uso de la aplicación.
       </p>
     </section>
 
     <section id="q5">
-      <h2><span class="num">5</span> Front-end: estado y autenticación</h2>
+      <h2>5. Front-end: estado y autenticación</h2>
       <p class="question">
-        En una aplicación bancaria que muestra el saldo de las cuentas, ¿cómo gestionarías el estado
-        y la autenticación en el front-end, garantizando seguridad y coherencia?
-      </p>
-
-      <p>
-        El backend es la fuente de verdad. El frontend pinta, valida y da feedback, pero no decide
-        cuánto dinero hay ni quién puede aprobar. Eso cambia la forma de gestionar el estado: guardo
-        poco y lo guardo con fecha de caducidad.
-      </p>
-
-      <h3>Estado</h3>
-      <p>
-        En Angular 22 uso servicios con signals. Un servicio de sesión guarda el usuario y su rol;
-        los componentes derivan lo que necesitan con <code>computed</code>. Para este tamaño no
-        metería NgRx: añade ceremonia sin resolver nada que no haga un servicio con signals. El
-        saldo no lo dejaría como estado global permanente; lo pediría al entrar en la vista, al
-        volver a la pestaña y después de cualquier operación. Si hay SSE o WebSocket, el evento
-        invalida y se vuelve a pedir; el push es un aviso, no la verdad.
+        En una aplicación bancaria que muestra el saldo de las cuentas, ¿Cómo gestionarías el estado
+        y la autenticación en el Frontend? Garantizando seguridad y coherencia.
       </p>
       <p>
-        Para coherencia, las operaciones de dinero no las haría optimistas. Esperaría la respuesta
-        del servidor, deshabilitaría el botón mientras se envía y manejaría un 409 de conflicto
-        enseñando el estado actualizado. Un “ya está hecho” que luego no se confirma es peor que un
-        segundo de espera.
-      </p>
-
-      <h3>Autenticación</h3>
-      <p>
-        Access token de vida corta en memoria, refresh token en cookie <code>HttpOnly</code>,
-        <code>Secure</code> y <code>SameSite=Lax</code>. Nada de <code>localStorage</code>. El
-        interceptor añade la cabecera Bearer y, si recibe un 401, hace un refresco single-flight y
-        reintenta la petición una vez. Varias peticiones a la vez no deben disparar cinco refrescos.
-        El logout revoca el refresh en el servidor y limpia el estado local.
-      </p>
-      <p>
-        Los guards de Angular son para la experiencia: evitar que alguien entre a una pantalla que
-        no le corresponde y conservar el <code>returnUrl</code>. La autorización de verdad está en
-        el backend con <code>@PreAuthorize</code> y comprobación de propiedad. Cualquiera puede
-        abrir las DevTools y saltarse un guard.
-      </p>
-      <p>
-        Añadiría CSP, no pondría tokens ni datos de cuenta en logs o URLs, y protegería con CSRF
-        los endpoints que usan la cookie. El access token en memoria se pierde al recargar; por eso
-        al arrancar se intenta restaurar la sesión con el refresh.
+        Estado: Depende mucho, si es una aplicación bancaria debe mantenerse al día en todas las
+        sesiones iniciadas, de la cuenta a la que se le esté haciendo la transacción o gestionando un
+        cambio, entonces todos deben enterarse o estar al día de cualquier cambio. Si no se permiten
+        múltiples sesiones, se puede mantener con un estado general desde la aplicación. Hay muchos
+        tipos, se puede utilizar por ejemplo una librería para manejar el estado, pero en Angular lo
+        que utilizaría para esos casos serían los signals y RxJS para lo asíncrono. Autenticación:
+        Para la autenticación en el Frontend usaría un access token de corta duración en memoria y el
+        refresh en una cookie <code>HttpOnly</code>, con un interceptor que añada el token y refresque
+        una sola vez si llega un 401; los guards solo controlan la navegación y la autorización real la
+        sigue haciendo el backend.
       </p>
     </section>
-
-    <section id="q6">
-      <h2><span class="num">6</span> Spring Boot</h2>
-
-      <h3>a. ¿Qué pasa internamente con @SpringBootApplication?</h3>
-      <p>
-        Es una anotación compuesta. Junta <code>@SpringBootConfiguration</code> (que a su vez es
-        <code>@Configuration</code>), <code>@EnableAutoConfiguration</code> y
-        <code>@ComponentScan</code>. Cuando llamas a <code>SpringApplication.run</code>, se crea el
-        contexto de aplicación, se prepara el <code>Environment</code> con perfiles, propiedades y
-        variables de entorno, se cargan las definiciones de beans y se escanea el paquete de la
-        clase principal y sus subpaquetes.
-      </p>
-      <p>
-        Después entra la auto-configuración: Spring Boot lee las clases declaradas en
-        <code>META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports</code>
-        y las va filtrando con condiciones como <code>@ConditionalOnClass</code>,
-        <code>@ConditionalOnMissingBean</code> o <code>@ConditionalOnProperty</code>. Las que
-        aplican registran beans; las que no, se descartan. Al final arranca el servidor embebido
-        (Tomcat en una app MVC), se publican eventos y se ejecutan los
-        <code>ApplicationRunner</code> o <code>CommandLineRunner</code>.
-      </p>
-      <p>
-        Lo que suele morder es mover la clase principal fuera del paquete raíz: el
-        <code>@ComponentScan</code> deja de encontrar tus beans. Y como las auto-configuraciones se
-        aplican después de los beans del usuario, si defines uno propio, la de Boot se retira sola.
-        Esa es la base de poder sobrescribir sin pelear.
-      </p>
-
-      <h3>b. Ciclo de vida de un bean</h3>
-      <p>
-        El contenedor registra la definición, instancia el bean (normalmente por constructor),
-        inyecta dependencias, llama a <code>BeanNameAware</code> y <code>BeanFactoryAware</code> si
-        aplican, ejecuta los <code>BeanPostProcessor</code> antes de la inicialización, luego
-        <code>@PostConstruct</code>, <code>InitializingBean.afterPropertiesSet()</code> o el
-        <code>initMethod</code>, y después los <code>BeanPostProcessor</code> de después de la
-        inicialización. Ahí es donde Spring envuelve el bean en proxies para AOP, transacciones o
-        seguridad. Al cerrar el contexto, <code>@PreDestroy</code>,
-        <code>DisposableBean.destroy()</code> o el <code>destroyMethod</code>.
-      </p>
-      <p>
-        Los scopes por defecto son singleton; prototype se crea cada vez y el contenedor no lo
-        destruye; request y session existen en aplicaciones web. Para intervenir uso
-        <code>@PostConstruct</code> para validar configuración, <code>@Bean(initMethod/destroyMethod)</code>
-        para recursos externos, un <code>BeanPostProcessor</code> para proxies o cross-cutting, y un
-        <code>ApplicationListener</code> para reaccionar a eventos. No metería lógica pesada en el
-        constructor: si necesita la base de datos o validar algo, mejor <code>@PostConstruct</code>
-        o un runner.
-      </p>
-
-      <h3>c. Personalizar la auto-configuración sin romper la convención</h3>
-      <p>
-        Sigo un orden: primero propiedades, luego un bean propio, después un customizer, y solo al
-        final excluir. Casi todo se resuelve con <code>@ConfigurationProperties</code> o con un bean
-        que hace que la auto-configuración se retire por <code>@ConditionalOnMissingBean</code>.
-        Para detalles del servidor o de seguridad, un <code>WebServerFactoryCustomizer</code> o mi
-        propio <code>SecurityFilterChain</code>; para una librería interna, una auto-configuración
-        con <code>@AutoConfiguration</code>, condiciones y <code>@AutoConfigureBefore/After</code>.
-      </p>
-      <p>
-        En este proyecto hay varios ejemplos: el <code>JwtEncoder</code>/<code>JwtDecoder</code>
-        propios, el <code>CacheManager</code> de Caffeine, las propiedades de CORS y una cadena de
-        seguridad con las reglas de la API. Boot sigue aportando el resto. También toqué propiedades
-        como <code>spring.jpa.open-in-view=false</code> y <code>ddl-auto=validate</code>, que es
-        justo lo que espero: cambiar lo necesario de forma explícita.
-      </p>
-      <p>
-        Excluir una auto-configuración es el último recurso. Si tengo que excluir cinco, probablemente
-        estoy peleando contra el framework y conviene replantear la aproximación. La convención sobre
-        configuración no significa no tocar nada; significa que el default funcione y que lo que
-        cambie esté acotado, documentado y probado.
-      </p>
-    </section>
-
-    <p class="closing">
-      Varias de estas decisiones están aplicadas en el repositorio de la prueba: JWT corto con
-      refresh en cookie, guards en Angular, caché con evicción, transacciones en la aprobación y
-      pruebas con Testcontainers.
-    </p>
   </main>
 
   <footer>Préstamos Makers · Parte teórica</footer>
