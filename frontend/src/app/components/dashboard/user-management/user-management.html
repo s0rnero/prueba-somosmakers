@@ -1,0 +1,155 @@
+<section class="rounded-xl border border-blue-100 bg-white p-6 shadow-sm">
+  <header class="flex flex-wrap items-center justify-between gap-4">
+    <h2 class="text-xl font-semibold">Gestión de usuarios</h2>
+    <button
+      type="button"
+      (click)="startCreate()"
+      class="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700"
+    >
+      Nuevo usuario
+    </button>
+  </header>
+
+  @if (error()) {
+    <p class="mt-3 text-sm text-red-600" aria-live="polite">{{ error() }}</p>
+  }
+  @if (success()) {
+    <p class="mt-3 text-sm text-emerald-700" aria-live="polite">{{ success() }}</p>
+  }
+
+  @if (formOpen()) {
+    <form
+      class="mt-5 grid gap-4 rounded-lg border border-blue-100 bg-blue-50 p-4 md:grid-cols-2"
+      [formGroup]="form"
+      (ngSubmit)="save()"
+    >
+      <label class="block text-sm font-medium" for="user-name">
+        Nombre
+        <input
+          id="user-name"
+          formControlName="name"
+          autocomplete="name"
+          class="mt-2 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100"
+        />
+        @if (form.controls.name.touched && form.controls.name.invalid) {
+          <span class="mt-1 block text-xs text-red-600">El nombre debe tener entre 2 y 120 caracteres.</span>
+        }
+      </label>
+
+      <label class="block text-sm font-medium" for="user-email">
+        Correo
+        <input
+          id="user-email"
+          type="email"
+          formControlName="email"
+          autocomplete="email"
+          class="mt-2 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100"
+        />
+        @if (form.controls.email.touched && form.controls.email.invalid) {
+          <span class="mt-1 block text-xs text-red-600">Ingresa un correo válido.</span>
+        }
+      </label>
+
+      <label class="block text-sm font-medium" for="user-role">
+        Rol
+        <select
+          id="user-role"
+          formControlName="role"
+          class="mt-2 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100"
+        >
+          <option value="USER">Usuario</option>
+          <option value="ADMIN">Administrador</option>
+        </select>
+      </label>
+
+      <label class="block text-sm font-medium" for="user-password">
+        {{ editingId() === null ? 'Contraseña' : 'Nueva contraseña (opcional)' }}
+        <input
+          id="user-password"
+          type="password"
+          formControlName="password"
+          autocomplete="new-password"
+          class="mt-2 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100"
+        />
+        @if (editingId() === null && form.controls.password.touched && form.controls.password.value.length === 0) {
+          <span class="mt-1 block text-xs text-red-600">La contraseña es obligatoria.</span>
+        }
+        @if (form.controls.password.touched && form.controls.password.invalid) {
+          <span class="mt-1 block text-xs text-red-600">La contraseña debe tener entre 8 y 72 caracteres.</span>
+        }
+      </label>
+
+      <div class="flex gap-3 md:col-span-2">
+        <button
+          type="submit"
+          [disabled]="saving()"
+          class="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 disabled:opacity-50"
+        >
+          {{ saving() ? 'Guardando…' : 'Guardar' }}
+        </button>
+        <button
+          type="button"
+          (click)="cancel()"
+          class="rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50"
+        >
+          Cancelar
+        </button>
+      </div>
+    </form>
+  }
+
+  @if (loading()) {
+    <p class="mt-4 text-sm text-slate-500">Cargando usuarios…</p>
+  } @else if (users().length) {
+    <div class="mt-4 overflow-x-auto">
+      <table class="w-full text-left text-sm">
+        <thead class="border-b border-slate-200 text-xs uppercase text-slate-500">
+          <tr>
+            <th scope="col" class="py-2 pr-4 font-medium">Nombre</th>
+            <th scope="col" class="py-2 pr-4 font-medium">Correo</th>
+            <th scope="col" class="py-2 pr-4 font-medium">Rol</th>
+            <th scope="col" class="py-2 pr-4 font-medium">Creado</th>
+            <th scope="col" class="py-2 font-medium">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (user of users(); track user.id) {
+            <tr class="border-b border-slate-100 last:border-0">
+              <td class="py-3 pr-4 font-medium">{{ user.name }}</td>
+              <td class="py-3 pr-4 text-slate-500">{{ user.email }}</td>
+              <td class="py-3 pr-4">
+                <span
+                  class="inline-flex rounded-full px-2 py-1 text-xs font-medium"
+                  [class]="user.role === 'ADMIN' ? 'bg-blue-100 text-blue-700' : 'bg-slate-100 text-slate-600'"
+                >
+                  {{ user.role === 'ADMIN' ? 'Administrador' : 'Usuario' }}
+                </span>
+              </td>
+              <td class="py-3 pr-4 text-slate-500">{{ user.createdAt | date: 'dd/MM/yyyy' }}</td>
+              <td class="py-3">
+                <div class="flex gap-3">
+                  <button
+                    type="button"
+                    (click)="startEdit(user)"
+                    class="text-sm font-medium text-blue-600 hover:text-blue-700"
+                  >
+                    Editar
+                  </button>
+                  <button
+                    type="button"
+                    (click)="remove(user)"
+                    class="text-sm font-medium text-red-600 hover:text-red-700"
+                  >
+                    Eliminar
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  } @else {
+    <p class="mt-4 text-sm text-slate-500">No hay usuarios registrados.</p>
+  }
+</section>

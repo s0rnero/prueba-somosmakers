@@ -1,0 +1,66 @@
+<main class="grid min-h-screen place-items-center bg-blue-50 px-4 py-10 text-slate-900">
+  <section class="w-full max-w-md rounded-xl border border-blue-100 bg-white p-8">
+    <h1 class="text-center text-2xl font-bold text-blue-700">Prestamos Makers</h1>
+    <p class="mt-2 text-center text-sm text-slate-500">Bienvenido a tu sistema de prestamos</p>
+    <h2 class="mt-6 text-center text-lg font-semibold text-slate-900">
+      {{ isRegister() ? 'Crea tu cuenta' : 'Inicia sesion' }}
+    </h2>
+
+    <form class="mt-6 flex w-full flex-col gap-4" (submit)="submit($event)">
+      @if (isRegister()) {
+        <app-text-input
+          id="name"
+          label="Nombre"
+          autocomplete="name"
+          [value]="name()"
+          (valueChange)="name.set($event)"
+        />
+      }
+
+      <app-text-input
+        id="email"
+        label="Correo electronico"
+        type="email"
+        autocomplete="email"
+        [value]="email()"
+        (valueChange)="email.set($event)"
+      />
+
+      <app-text-input
+        id="password"
+        label="Contraseña"
+        type="password"
+        [autocomplete]="isRegister() ? 'new-password' : 'current-password'"
+        [maxlength]="72"
+        [value]="password()"
+        (valueChange)="password.set($event)"
+      />
+
+      @if (isRegister()) {
+        <app-text-input
+          id="confirm-password"
+          label="Confirmar contraseña"
+          type="password"
+          autocomplete="new-password"
+          [maxlength]="72"
+          [value]="confirmPassword()"
+          (valueChange)="confirmPassword.set($event)"
+        />
+      }
+
+      <app-form-error [message]="error()" />
+
+      <p class="text-center">
+        {{ isRegister() ? '¿Ya tienes cuenta?' : '¿No tienes cuenta?' }}
+        <button type="button" class="font-medium text-blue-600 hover:text-blue-700 hover:underline" (click)="toggleMode()">
+          {{ isRegister() ? 'Inicia sesion' : 'Registrate aqui' }}
+        </button>
+      </p>
+
+      <app-primary-button
+        [label]="isRegister() ? 'crear cuenta' : 'continuar'"
+        [loading]="isLoading()"
+      />
+    </form>
+  </section>
+</main>

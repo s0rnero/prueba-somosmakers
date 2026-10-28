@@ -1,0 +1,82 @@
+<div class="grid gap-6 md:grid-cols-2">
+  <section class="rounded-xl border border-blue-100 bg-white p-6 shadow-sm">
+    <h2 class="text-xl font-semibold">¿Deseas solicitar un préstamo?</h2>
+    <p class="mt-1 text-sm text-slate-500">Indica el monto y el plazo que necesitas.</p>
+
+    <form class="mt-6" [formGroup]="form" (ngSubmit)="submit()">
+      <label class="block text-sm font-medium" for="amount">Monto</label>
+      <input
+        id="amount"
+        type="number"
+        formControlName="amount"
+        min="100"
+        max="50000"
+        placeholder="Monto"
+        class="mt-2 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100"
+      />
+      @if (form.controls.amount.touched && form.controls.amount.invalid) {
+        <p class="mt-1 text-xs text-red-600">El monto debe estar entre 100 y 50000.</p>
+      }
+
+      <label class="mt-4 block text-sm font-medium" for="termMonths">Plazo (meses)</label>
+      <input
+        id="termMonths"
+        type="number"
+        formControlName="termMonths"
+        min="1"
+        max="60"
+        placeholder="Plazo"
+        class="mt-2 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100"
+      />
+      @if (form.controls.termMonths.touched && form.controls.termMonths.invalid) {
+        <p class="mt-1 text-xs text-red-600">El plazo debe estar entre 1 y 60 meses.</p>
+      }
+
+      <button
+        type="submit"
+        [disabled]="submitting()"
+        class="mt-6 rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 disabled:opacity-50"
+      >
+        {{ submitting() ? 'Enviando…' : 'Solicitar' }}
+      </button>
+
+      @if (message()) {
+        <p class="mt-4 text-sm text-emerald-700" aria-live="polite">{{ message() }}</p>
+      }
+      @if (error()) {
+        <p class="mt-4 text-sm text-red-600" aria-live="polite">{{ error() }}</p>
+      }
+    </form>
+  </section>
+
+  <section class="rounded-xl border border-blue-100 bg-white p-6 shadow-sm">
+    <h2 class="text-xl font-semibold">Mis préstamos</h2>
+
+    @if (loans().length) {
+      <div class="mt-4 overflow-x-auto">
+        <table class="w-full text-left text-sm">
+          <thead class="border-b border-slate-200 text-xs uppercase text-slate-500">
+            <tr>
+              <th scope="col" class="py-2 pr-4 font-medium">Fecha</th>
+              <th scope="col" class="py-2 pr-4 font-medium">Monto</th>
+              <th scope="col" class="py-2 pr-4 font-medium">Plazo</th>
+              <th scope="col" class="py-2 font-medium">Estado</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (loan of loans(); track loan.id) {
+              <tr class="border-b border-slate-100 last:border-0">
+                <td class="py-3 pr-4 text-slate-500">{{ loan.requestedAt | date: 'dd/MM/yyyy' }}</td>
+                <td class="py-3 pr-4 font-medium">{{ loan.amount | currency: 'USD' : 'symbol' : '1.0-0' }}</td>
+                <td class="py-3 pr-4 text-slate-500">{{ loan.termMonths }} meses</td>
+                <td class="py-3"><app-loan-status-badge [status]="loan.status" /></td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    } @else {
+      <p class="mt-4 text-sm text-slate-500">Todavía no tienes préstamos solicitados.</p>
+    }
+  </section>
+</div>

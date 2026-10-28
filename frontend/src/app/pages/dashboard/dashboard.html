@@ -1,0 +1,27 @@
+<div class="min-h-screen bg-blue-50 text-slate-900">
+  <nav class="border-b border-blue-100 bg-white">
+    <div class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
+      <span class="text-lg font-semibold text-blue-700">Préstamos Makers</span>
+      <button
+        type="button"
+        (click)="logout()"
+        class="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700"
+      >
+        Cerrar sesión
+      </button>
+    </div>
+  </nav>
+
+  <main class="mx-auto max-w-5xl px-6 py-8">
+    @if (user(); as sessionUser) {
+      <header class="mb-6">
+        <h1 class="text-3xl font-bold">Bienvenido, {{ sessionUser.name }}</h1>
+        <p class="mt-1 text-sm text-slate-500">{{ isAdmin() ? 'Administrador' : 'Usuario' }}</p>
+      </header>
+
+      <router-outlet />
+    } @else {
+      <p class="text-sm text-slate-500">Cargando sesión…</p>
+    }
+  </main>
+</div>
