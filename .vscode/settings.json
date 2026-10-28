@@ -1,0 +1,16 @@
+{
+  "eslint.workingDirectories": [
+    {
+      "directory": "frontend",
+      "changeProcessCWD": true
+    }
+  ],
+  "eslint.validate": ["javascript", "typescript", "html"],
+  "stylelint.validate": ["css"],
+  "stylelint.configFile": "frontend/.stylelintrc.json",
+  "stylelint.stylelintPath": "frontend/node_modules/stylelint",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.stylelint": "explicit"
+  }
+}

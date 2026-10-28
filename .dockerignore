@@ -1,0 +1,16 @@
+.git
+.github
+.tmp
+.vscode
+.idea
+frontend
+**/node_modules
+**/dist
+**/target
+**/.angular
+.env
+certs
+*.pdf
+README.md
+database/README.md
+database/init

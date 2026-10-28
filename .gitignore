@@ -1,0 +1,22 @@
+# Local secrets and TLS material
+.env
+certs/*
+!certs/README.md
+
+# Local temporary files
+.tmp/
+
+# JavaScript
+**/node_modules/
+**/dist/
+**/.angular/
+npm-debug.log*
+
+# Java
+**/target/
+*.log
+
+# Editors and OS
+.idea/
+*.iml
+.DS_Store
