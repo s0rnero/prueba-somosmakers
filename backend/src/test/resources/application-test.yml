@@ -1,0 +1,8 @@
+# Test-only secret. Never reuse it outside the test suite.
+app:
+  security:
+    jwt:
+      secret: c29tb3NtYWtlcnMtdGVzdC1vbmx5LXNlY3JldC0zMi1ieXRlcw==
+      issuer: somosmakers-prestamos
+  cors:
+    allowed-origins: http://localhost:4200
